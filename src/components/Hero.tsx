@@ -12,7 +12,7 @@ const Hero = () => {
     <Box component="section" sx={{ pt: { xs: 12, md: 20 }, pb: 8 }}>
       <Grid container spacing={6} alignItems="center">
         {/* Left Column: Text */}
-        <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
+        <Grid item xs={12} md={6} order={{ xs: 1, md: 1 }}> {/* Changed mobile order to 1 (top) */}
           <Stack spacing={4}>
             {/* Open to Work Badge */}
             <Box
@@ -49,7 +49,15 @@ const Hero = () => {
             </Box>
 
             {/* Title */}
-            <Typography variant="h2" component="h1" sx={{ fontWeight: 800, lineHeight: 1.15 }}>
+            <Typography
+              variant="h2"
+              component="h1"
+              sx={{
+                fontWeight: 800,
+                lineHeight: 1.15,
+                fontSize: { xs: '2.5rem', md: '3.75rem' } // Responsive font size
+              }}
+            >
               Building Resilient <br />
               <Box component="span" sx={{
                 background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
@@ -103,7 +111,7 @@ const Hero = () => {
         </Grid>
 
         {/* Right Column: Code Editor */}
-        <Grid item xs={12} md={6} order={{ xs: 1, md: 2 }}>
+        <Grid item xs={12} md={6} order={{ xs: 2, md: 2 }}> {/* Changed mobile order to 2 (bottom) */}
           <Box
             sx={{
               borderRadius: 3,
