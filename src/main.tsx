@@ -5,67 +5,49 @@ import { createTheme, ThemeProvider, CssBaseline } from '@mui/material'
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
-    background: {
-      default: '#121212',
-      paper: '#1E1E1E',
-    },
+    mode: 'light',
     primary: {
-      main: '#00ff9d', // A nice terminal green
+      main: '#007acc',
     },
     secondary: {
-      main: '#00bcd4', // Cyan
+      main: '#008080',
+    },
+    background: {
+      default: '#ffffff',
+      paper: '#f5f5f5',
     },
     text: {
-      primary: '#e0e0e0',
-      secondary: '#b0b0b0',
+      primary: '#1f2937',
+      secondary: '#4b5563',
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Inter", sans-serif',
     h1: {
-      fontFamily: '"Fira Code", monospace',
+      fontFamily: '"Inter", sans-serif',
       fontWeight: 700,
     },
     h2: {
-      fontFamily: '"Fira Code", monospace',
-      fontWeight: 600,
+      fontFamily: '"Inter", sans-serif',
+      fontWeight: 700,
     },
     h3: {
-      fontFamily: '"Fira Code", monospace',
-      fontWeight: 600,
-    },
-    h4: {
-      fontFamily: '"Fira Code", monospace',
-      fontWeight: 600,
-    },
-    h5: {
-      fontFamily: '"Fira Code", monospace',
-      fontWeight: 500,
-    },
-    h6: {
-      fontFamily: '"Fira Code", monospace',
-      fontWeight: 500,
+      fontFamily: '"Inter", sans-serif',
+      fontWeight: 700,
     },
     button: {
-      fontFamily: '"Fira Code", monospace',
-      fontWeight: 600,
+      fontFamily: '"Inter", sans-serif',
+      fontWeight: 500,
       textTransform: 'none',
     },
+    // @ts-ignore
+    fontFamilyMono: '"Fira Code", monospace',
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0, // Sharp edges for technical feel
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          backgroundImage: 'none', // Remove default gradient in dark mode
-          border: '1px solid #333',
+          borderRadius: 8,
         },
       },
     },
