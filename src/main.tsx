@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider, CssBaseline } from '@mui/material'
 const theme = createTheme({
   palette: {
     mode: 'light',
+<<<<<<< HEAD
     primary: {
       main: '#007acc',
     },
@@ -23,6 +24,25 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: '"Inter", sans-serif',
+=======
+    background: {
+      default: '#f8fafc', // Tailwind bg-slate-50
+      paper: '#ffffff',
+    },
+    primary: {
+      main: '#0369a1', // Tailwind primary color
+    },
+    secondary: {
+      main: '#64748b', // Tailwind text-muted
+    },
+    text: {
+      primary: '#0f172a', // Tailwind text-main
+      secondary: '#64748b', // Tailwind text-muted
+    },
+  },
+  typography: {
+    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+>>>>>>> main
     h1: {
       fontFamily: '"Inter", sans-serif',
       fontWeight: 700,
@@ -48,6 +68,17 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 8,
+<<<<<<< HEAD
+=======
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundImage: 'none',
+          border: 'none',
+>>>>>>> main
         },
       },
     },
