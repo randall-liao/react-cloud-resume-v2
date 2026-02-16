@@ -1,7 +1,8 @@
-import { Box, Typography, Stack, Paper, Chip } from '@mui/material';
+import { Box, Typography, Stack, Paper, Chip, useTheme, alpha } from '@mui/material';
 import TimelineIcon from '@mui/icons-material/Timeline';
 
 const Projects = () => {
+  const theme = useTheme();
   return (
     <Box sx={{ px: 2, mb: 4 }}>
         <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2, px: 1 }}>
@@ -16,7 +17,7 @@ const Projects = () => {
 
             {/* Project Cosmos */}
             <Box sx={{ position: 'relative', pl: 5, mb: 3 }}>
-                <Box sx={{ position: 'absolute', left: 15, top: 16, width: 10, height: 10, borderRadius: '50%', bgcolor: 'primary.main', border: '4px solid white', boxShadow: 1, zIndex: 1 }} />
+                <Box sx={{ position: 'absolute', left: 15, top: 16, width: 10, height: 10, borderRadius: '50%', bgcolor: 'primary.main', border: '4px solid', borderColor: 'background.paper', boxShadow: 1, zIndex: 1 }} />
                 <Paper
                     elevation={0}
                     sx={{
@@ -24,18 +25,19 @@ const Projects = () => {
                         border: '1px solid',
                         borderColor: 'divider',
                         overflow: 'hidden',
-                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
+                        boxShadow: theme.shadows[1],
+                        bgcolor: 'background.paper'
                     }}
                 >
-                    <Box sx={{ height: 96, position: 'relative', bgcolor: 'grey.100' }}>
+                    <Box sx={{ height: 96, position: 'relative', bgcolor: 'action.hover' }}>
                         <img
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5R76gzu8ASTi-HhYfeaEGI_ndv6_g26YN2iGs2eztov37mbW22yF8YFfXDJ0cUj85C4An4DkLiBOMPyg8WdDwiXvFqon8Zmx0PfeGAAOYoySsTmxY3bu3yfUUP1iqgijfonHWB8oRG2lkJkenazi8HrpADpbe9ll1dMVUNqM9ADkbnn7LF7RJqAa4Aqug7KxoG3M3b2FCvVG3LryoVLNCggL3PfZYnBljjneyFxL0uF6cuXP0QfJxeJiKLaLrQoRt93ggDiXbK19t"
                             alt="Abstract network"
                             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
-                        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.2) 50%, transparent 100%)' }} />
+                        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.2) 50%, transparent 100%)', opacity: theme.palette.mode === 'dark' ? 0.2 : 1 }} />
                         <Box sx={{ position: 'absolute', bottom: 8, left: 16 }}>
-                            <Typography variant="h6" sx={{ fontWeight: 700, lineHeight: 1 }}>Project Cosmos</Typography>
+                            <Typography variant="h6" sx={{ fontWeight: 700, lineHeight: 1, textShadow: theme.palette.mode === 'dark' ? '0 1px 2px rgba(0,0,0,0.8)' : 'none' }}>Project Cosmos</Typography>
                             <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', fontWeight: 700, color: 'primary.main' }}>Senior Architect</Typography>
                         </Box>
                     </Box>
@@ -45,7 +47,7 @@ const Projects = () => {
                         </Typography>
                         <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                             {['AWS', 'K8s', 'Terraform'].map(tag => (
-                                <Chip key={tag} label={tag} size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: '#eff6ff', color: 'primary.main', border: '1px solid', borderColor: '#dbeafe' }} />
+                                <Chip key={tag} label={tag} size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: alpha(theme.palette.primary.main, 0.1), color: 'primary.main', border: '1px solid', borderColor: alpha(theme.palette.primary.main, 0.2) }} />
                             ))}
                         </Stack>
                     </Box>
@@ -54,14 +56,14 @@ const Projects = () => {
 
             {/* Axon Core */}
             <Box sx={{ position: 'relative', pl: 5, mb: 3 }}>
-                <Box sx={{ position: 'absolute', left: 15, top: 16, width: 10, height: 10, borderRadius: '50%', bgcolor: 'text.secondary', border: '4px solid white', zIndex: 1 }} />
-                <Paper elevation={0} sx={{ borderRadius: 3, border: '1px solid', borderColor: 'divider', overflow: 'hidden', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
-                    <Box sx={{ px: 2, py: 1.5, borderBottom: '1px solid', borderColor: 'divider', bgcolor: 'grey.50', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <Box sx={{ position: 'absolute', left: 15, top: 16, width: 10, height: 10, borderRadius: '50%', bgcolor: 'text.secondary', border: '4px solid', borderColor: 'background.paper', zIndex: 1 }} />
+                <Paper elevation={0} sx={{ borderRadius: 3, border: '1px solid', borderColor: 'divider', overflow: 'hidden', boxShadow: theme.shadows[1], bgcolor: 'background.paper' }}>
+                    <Box sx={{ px: 2, py: 1.5, borderBottom: '1px solid', borderColor: 'divider', bgcolor: 'background.default', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                         <Box>
                             <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.2 }}>Axon Core</Typography>
                             <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', color: 'text.secondary' }}>Backend Lead</Typography>
                         </Box>
-                        <Chip label="2021-2023" size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'white', border: '1px solid', borderColor: 'divider' }} />
+                        <Chip label="2021-2023" size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'background.paper', border: '1px solid', borderColor: 'divider' }} />
                     </Box>
                     <Box sx={{ p: 2 }}>
                         <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1.5, lineHeight: 1.5 }}>
@@ -69,7 +71,7 @@ const Projects = () => {
                         </Typography>
                         <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                             {['Go', 'gRPC', 'Kafka'].map(tag => (
-                                <Chip key={tag} label={tag} size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'grey.100', color: 'text.secondary', border: '1px solid', borderColor: 'grey.200' }} />
+                                <Chip key={tag} label={tag} size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'action.hover', color: 'text.secondary', border: '1px solid', borderColor: 'divider' }} />
                             ))}
                         </Stack>
                     </Box>
@@ -78,19 +80,19 @@ const Projects = () => {
 
              {/* Data Pipeline */}
              <Box sx={{ position: 'relative', pl: 5 }}>
-                <Box sx={{ position: 'absolute', left: 15, top: 16, width: 10, height: 10, borderRadius: '50%', bgcolor: 'text.secondary', border: '4px solid white', zIndex: 1 }} />
-                <Paper elevation={0} sx={{ borderRadius: 3, border: '1px solid', borderColor: 'divider', overflow: 'hidden', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
-                    <Box sx={{ px: 2, py: 1.5, borderBottom: '1px solid', borderColor: 'divider', bgcolor: 'grey.50', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <Box sx={{ position: 'absolute', left: 15, top: 16, width: 10, height: 10, borderRadius: '50%', bgcolor: 'text.secondary', border: '4px solid', borderColor: 'background.paper', zIndex: 1 }} />
+                <Paper elevation={0} sx={{ borderRadius: 3, border: '1px solid', borderColor: 'divider', overflow: 'hidden', boxShadow: theme.shadows[1], bgcolor: 'background.paper' }}>
+                    <Box sx={{ px: 2, py: 1.5, borderBottom: '1px solid', borderColor: 'divider', bgcolor: 'background.default', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                         <Box>
                             <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.2 }}>Data Pipeline</Typography>
                             <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', color: 'text.secondary' }}>Systems Eng</Typography>
                         </Box>
-                        <Chip label="2019-2021" size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'white', border: '1px solid', borderColor: 'divider' }} />
+                        <Chip label="2019-2021" size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'background.paper', border: '1px solid', borderColor: 'divider' }} />
                     </Box>
                     <Box sx={{ p: 2 }}>
                         <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                             {['Python', 'Airflow', 'PostgreSQL'].map(tag => (
-                                <Chip key={tag} label={tag} size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'grey.100', color: 'text.secondary', border: '1px solid', borderColor: 'grey.200' }} />
+                                <Chip key={tag} label={tag} size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'action.hover', color: 'text.secondary', border: '1px solid', borderColor: 'divider' }} />
                             ))}
                         </Stack>
                     </Box>

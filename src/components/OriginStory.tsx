@@ -1,15 +1,16 @@
-import { Box, Typography, Stack, Paper } from '@mui/material';
+import { Box, Typography, Stack, Paper, useTheme, alpha } from '@mui/material';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 
 const OriginStory = () => {
+  const theme = useTheme();
   return (
     <Box sx={{ px: 2, mb: 4 }}>
       <Box
         sx={{
             p: '1px',
-            background: 'linear-gradient(to bottom right, #0369a1, transparent)',
+            background: `linear-gradient(to bottom right, ${theme.palette.primary.main}, transparent)`,
             borderRadius: 3,
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)'
+            boxShadow: theme.shadows[1]
         }}
       >
         <Paper 
@@ -19,7 +20,8 @@ const OriginStory = () => {
                 borderRadius: 3,
                 position: 'relative',
                 overflow: 'hidden',
-                height: '100%'
+                height: '100%',
+                bgcolor: 'background.paper'
             }}
         >
             <Box
@@ -29,7 +31,7 @@ const OriginStory = () => {
                     right: 0,
                     width: 128,
                     height: 128,
-                    bgcolor: '#eff6ff',
+                    bgcolor: alpha(theme.palette.primary.main, 0.1),
                     borderRadius: '50%',
                     transform: 'translate(50%, -50%)',
                     filter: 'blur(40px)',
