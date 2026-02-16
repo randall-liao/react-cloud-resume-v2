@@ -1,26 +1,111 @@
-import { Container, Paper, Typography, Stack, Box } from '@mui/material';
+import { Box, Typography, Stack, Paper, Grid } from '@mui/material';
+import InterestsIcon from '@mui/icons-material/Interests';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
+import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 
 const Interests = () => {
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h5" sx={{ mb: 3, borderBottom: '1px solid #333', pb: 1 }}>
-        ./interests
-      </Typography>
-      <Paper elevation={0} sx={{ p: 3, border: '1px dashed #555' }}>
-        <Stack direction="row" spacing={3} alignItems="flex-start">
-            <ThermostatIcon color="secondary" sx={{ fontSize: 40 }} />
-            <Box>
-                <Typography variant="h6" gutterBottom>
-                    Precision Cooking (Sous Vide)
-                </Typography>
-                <Typography variant="body1" color="text.secondary">
-                    Applying the same rigorous temperature and time controls used for perfect chicken thighs to building fault-tolerant cloud infrastructure.
-                </Typography>
-            </Box>
-        </Stack>
-      </Paper>
-    </Container>
+    <Box sx={{ px: 2, mb: 12 }}>
+      <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2, px: 1 }}>
+        <InterestsIcon color="primary" fontSize="small" />
+        <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'text.secondary', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+            Side Channel
+        </Typography>
+      </Stack>
+
+      <Grid container spacing={1.5}>
+        <Grid item xs={6}>
+            <Paper
+                elevation={0}
+                sx={{
+                    p: 2,
+                    borderRadius: 3,
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    transition: 'all 0.2s',
+                    '&:hover': { bgcolor: 'background.default' }
+                }}
+            >
+                <Box
+                    sx={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: '50%',
+                        bgcolor: '#fef2f2',
+                        color: '#ef4444',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mb: 1
+                    }}
+                >
+                    <ThermostatIcon fontSize="small" />
+                </Box>
+                <Box>
+                    <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                        Sous Vide
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1 }}>
+                        IoT Temp Control
+                    </Typography>
+                    <Typography variant="h6" sx={{ fontFamily: '"Fira Code", monospace', fontWeight: 700, color: 'text.primary' }}>
+                        132.5°F
+                    </Typography>
+                </Box>
+            </Paper>
+        </Grid>
+        <Grid item xs={6}>
+            <Paper
+                elevation={0}
+                sx={{
+                    p: 2,
+                    borderRadius: 3,
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    transition: 'all 0.2s',
+                    '&:hover': { bgcolor: 'background.default' }
+                }}
+            >
+                <Box
+                    sx={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: '50%',
+                        bgcolor: '#eef2ff',
+                        color: '#6366f1',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mb: 1
+                    }}
+                >
+                    <FlightTakeoffIcon fontSize="small" />
+                </Box>
+                <Box>
+                    <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                        Drone Pilot
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1 }}>
+                        FPV Racing
+                    </Typography>
+                    <Typography variant="h6" sx={{ fontFamily: '"Fira Code", monospace', fontWeight: 700, color: 'text.primary' }}>
+                        4S LiPo
+                    </Typography>
+                </Box>
+            </Paper>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 

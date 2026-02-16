@@ -1,28 +1,72 @@
-import { Container, Card, CardContent, Typography, Box, Stack } from '@mui/material';
-import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+import { Box, Typography, Stack, Paper } from '@mui/material';
+import StarsIcon from '@mui/icons-material/Stars';
 
 const Certifications = () => {
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h5" sx={{ mb: 3, borderBottom: '1px solid #333', pb: 1 }}>
-        ./certifications
-      </Typography>
-      <Card sx={{ borderLeft: '4px solid #FF9900' }}>
-        <CardContent>
-            <Stack direction="row" alignItems="center" spacing={2}>
-                <VerifiedUserIcon sx={{ color: '#FF9900', fontSize: 40 }} />
-                <Box>
-                    <Typography variant="h6">
-                        AWS Certified Solutions Architect – Professional
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ fontFamily: '"Fira Code", monospace' }}>
-                        ID: AWS-PSA-XXXXX
-                    </Typography>
-                </Box>
+    <Box sx={{ px: 2, mb: 4 }}>
+      <Paper
+        elevation={0}
+        sx={{
+            borderRadius: 3,
+            border: '1px solid',
+            borderColor: 'divider',
+            p: 2.5,
+            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
+            position: 'relative',
+            overflow: 'hidden',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+        }}
+      >
+        <Box sx={{ position: 'relative', zIndex: 1, maxWidth: '60%' }}>
+            <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 0.5 }}>
+                <StarsIcon sx={{ color: '#f59e0b', fontSize: 18 }} />
+                <Typography variant="caption" sx={{ fontWeight: 700, color: '#d97706', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                    Certified
+                </Typography>
             </Stack>
-        </CardContent>
-      </Card>
-    </Container>
+            <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'text.primary', lineHeight: 1.3, mb: 0.5 }}>
+                AWS Solutions Architect
+            </Typography>
+            <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                Professional Level
+            </Typography>
+        </Box>
+
+        <Box
+            sx={{
+                width: 56,
+                height: 56,
+                borderRadius: 2,
+                background: 'linear-gradient(to bottom right, #fbbf24, #f97316)',
+                transform: 'rotate(3deg)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: 3,
+                border: '2px solid white',
+                zIndex: 1
+            }}
+        >
+            <Typography variant="h6" sx={{ fontWeight: 700, color: 'white', textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+                AWS
+            </Typography>
+        </Box>
+
+        <Box
+            sx={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                height: '100%',
+                width: '66%',
+                background: 'linear-gradient(to left, #fffbeb, transparent)',
+                zIndex: 0
+            }}
+        />
+      </Paper>
+    </Box>
   );
 };
 

@@ -1,33 +1,55 @@
-import { Container, Paper, Typography, Stack } from '@mui/material';
-import CloudQueueIcon from '@mui/icons-material/CloudQueue';
+import { Box, Typography, Stack, Paper } from '@mui/material';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 
 const OriginStory = () => {
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
+    <Box sx={{ px: 2, mb: 4 }}>
+      <Box
+        sx={{
+            p: '1px',
+            background: 'linear-gradient(to bottom right, #0369a1, transparent)',
+            borderRadius: 3,
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)'
+        }}
+      >
         <Paper 
             elevation={0}
             sx={{ 
-                p: 4, 
-                borderLeft: '4px solid #00ff9d',
-                bgcolor: 'rgba(0, 255, 157, 0.05)'
+                p: 2.5,
+                borderRadius: 3,
+                position: 'relative',
+                overflow: 'hidden',
+                height: '100%'
             }}
         >
-            <Stack spacing={2}>
-                <Stack direction="row" alignItems="center" spacing={2}>
-                     <CloudQueueIcon color="primary" />
-                     <Typography variant="h5" color="text.primary">
-                        origin_story.log
-                     </Typography>
-                </Stack>
-                <Typography variant="body1" sx={{ fontFamily: '"Roboto Mono", monospace', lineHeight: 1.8 }}>
-                    In 2018, I discovered cloud computing via GeForce Now. It wasn't just gaming; it was a realization. 
-                    I saw that compute power was becoming a centralized utility, much like the electricity grid of the 1900s. 
-                    This shift from local hardware to on-demand, scalable infrastructure sparked my journey into building 
-                    fault-tolerant, distributed systems.
-                </Typography>
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    width: 128,
+                    height: 128,
+                    bgcolor: '#eff6ff',
+                    borderRadius: '50%',
+                    transform: 'translate(50%, -50%)',
+                    filter: 'blur(40px)',
+                    zIndex: 0
+                }}
+            />
+
+            <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1.5, position: 'relative', zIndex: 1 }}>
+                 <HistoryEduIcon sx={{ color: 'primary.main', fontSize: 20 }} />
+                 <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'text.primary', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                    Origin Story
+                 </Typography>
             </Stack>
+
+            <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6, fontWeight: 500, position: 'relative', zIndex: 1 }}>
+                Forged in the fires of monolithic legacy systems, I now architect serverless microservices. My mission is to build scalable, resilient cloud infrastructure that developers love to deploy on.
+            </Typography>
         </Paper>
-    </Container>
+      </Box>
+    </Box>
   );
 };
 

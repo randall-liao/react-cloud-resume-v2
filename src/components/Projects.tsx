@@ -1,69 +1,103 @@
-import { Container, Grid, Card, CardContent, Typography, Chip, Stack } from '@mui/material';
-
-interface Project {
-  title: string;
-  tags: string[];
-  description?: string;
-}
-
-const projects: Project[] = [
-  {
-    title: 'cosmos',
-    tags: ['Python', 'FastAPI', 'AWS Fargate', 'API Gateway'],
-    description: 'A high-performance backend service orchestrating microservices.'
-  },
-  {
-    title: 'Axon',
-    tags: ['AWS Lambda', 'ECS'],
-    description: 'Event-driven architecture for real-time data processing.'
-  },
-  {
-    title: 'Data Engineering',
-    tags: ['Oracle', 'Flink', 'ClickHouse'],
-    description: 'Scalable data pipelines and real-time analytics infrastructure.'
-  }
-];
+import { Box, Typography, Stack, Paper, Chip } from '@mui/material';
+import TimelineIcon from '@mui/icons-material/Timeline';
 
 const Projects = () => {
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h5" sx={{ mb: 3, borderBottom: '1px solid #333', pb: 1 }}>
-        ./projects
-      </Typography>
-      <Grid container spacing={3}>
-        {projects.map((project, index) => (
-          <Grid item xs={12} md={4} key={index}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <CardContent>
-                <Typography variant="h6" gutterBottom color="primary">
-                  {project.title}
-                </Typography>
-                {project.description && (
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                    {project.description}
-                  </Typography>
-                )}
-                <Stack direction="row" flexWrap="wrap" gap={1}>
-                  {project.tags.map((tag) => (
-                    <Chip 
-                        key={tag} 
-                        label={tag} 
-                        size="small" 
-                        variant="outlined" 
-                        sx={{ 
-                            fontFamily: '"Fira Code", monospace',
-                            borderRadius: '4px',
-                            borderColor: 'rgba(255, 255, 255, 0.2)'
-                        }} 
-                    />
-                  ))}
-                </Stack>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <Box sx={{ px: 2, mb: 4 }}>
+        <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2, px: 1 }}>
+            <TimelineIcon color="primary" fontSize="small" />
+            <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'text.secondary', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                Architecture Log
+            </Typography>
+        </Stack>
+
+        <Box sx={{ position: 'relative', pl: 1 }}>
+            <Box sx={{ position: 'absolute', top: 8, bottom: 8, left: 19, width: 2, bgcolor: 'divider' }} />
+
+            {/* Project Cosmos */}
+            <Box sx={{ position: 'relative', pl: 5, mb: 3 }}>
+                <Box sx={{ position: 'absolute', left: 15, top: 16, width: 10, height: 10, borderRadius: '50%', bgcolor: 'primary.main', border: '4px solid white', boxShadow: 1, zIndex: 1 }} />
+                <Paper
+                    elevation={0}
+                    sx={{
+                        borderRadius: 3,
+                        border: '1px solid',
+                        borderColor: 'divider',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
+                    }}
+                >
+                    <Box sx={{ height: 96, position: 'relative', bgcolor: 'grey.100' }}>
+                        <img
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5R76gzu8ASTi-HhYfeaEGI_ndv6_g26YN2iGs2eztov37mbW22yF8YFfXDJ0cUj85C4An4DkLiBOMPyg8WdDwiXvFqon8Zmx0PfeGAAOYoySsTmxY3bu3yfUUP1iqgijfonHWB8oRG2lkJkenazi8HrpADpbe9ll1dMVUNqM9ADkbnn7LF7RJqAa4Aqug7KxoG3M3b2FCvVG3LryoVLNCggL3PfZYnBljjneyFxL0uF6cuXP0QfJxeJiKLaLrQoRt93ggDiXbK19t"
+                            alt="Abstract network"
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.2) 50%, transparent 100%)' }} />
+                        <Box sx={{ position: 'absolute', bottom: 8, left: 16 }}>
+                            <Typography variant="h6" sx={{ fontWeight: 700, lineHeight: 1 }}>Project Cosmos</Typography>
+                            <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', fontWeight: 700, color: 'primary.main' }}>Senior Architect</Typography>
+                        </Box>
+                    </Box>
+                    <Box sx={{ p: 2, pt: 1 }}>
+                        <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1.5, lineHeight: 1.5 }}>
+                            Orchestrated a multi-region Kubernetes migration reducing latency by 40%.
+                        </Typography>
+                        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                            {['AWS', 'K8s', 'Terraform'].map(tag => (
+                                <Chip key={tag} label={tag} size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: '#eff6ff', color: 'primary.main', border: '1px solid', borderColor: '#dbeafe' }} />
+                            ))}
+                        </Stack>
+                    </Box>
+                </Paper>
+            </Box>
+
+            {/* Axon Core */}
+            <Box sx={{ position: 'relative', pl: 5, mb: 3 }}>
+                <Box sx={{ position: 'absolute', left: 15, top: 16, width: 10, height: 10, borderRadius: '50%', bgcolor: 'text.secondary', border: '4px solid white', zIndex: 1 }} />
+                <Paper elevation={0} sx={{ borderRadius: 3, border: '1px solid', borderColor: 'divider', overflow: 'hidden', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
+                    <Box sx={{ px: 2, py: 1.5, borderBottom: '1px solid', borderColor: 'divider', bgcolor: 'grey.50', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <Box>
+                            <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.2 }}>Axon Core</Typography>
+                            <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', color: 'text.secondary' }}>Backend Lead</Typography>
+                        </Box>
+                        <Chip label="2021-2023" size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'white', border: '1px solid', borderColor: 'divider' }} />
+                    </Box>
+                    <Box sx={{ p: 2 }}>
+                        <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1.5, lineHeight: 1.5 }}>
+                            High-throughput event streaming platform processing 1M+ events/sec.
+                        </Typography>
+                        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                            {['Go', 'gRPC', 'Kafka'].map(tag => (
+                                <Chip key={tag} label={tag} size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'grey.100', color: 'text.secondary', border: '1px solid', borderColor: 'grey.200' }} />
+                            ))}
+                        </Stack>
+                    </Box>
+                </Paper>
+            </Box>
+
+             {/* Data Pipeline */}
+             <Box sx={{ position: 'relative', pl: 5 }}>
+                <Box sx={{ position: 'absolute', left: 15, top: 16, width: 10, height: 10, borderRadius: '50%', bgcolor: 'text.secondary', border: '4px solid white', zIndex: 1 }} />
+                <Paper elevation={0} sx={{ borderRadius: 3, border: '1px solid', borderColor: 'divider', overflow: 'hidden', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
+                    <Box sx={{ px: 2, py: 1.5, borderBottom: '1px solid', borderColor: 'divider', bgcolor: 'grey.50', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <Box>
+                            <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.2 }}>Data Pipeline</Typography>
+                            <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', color: 'text.secondary' }}>Systems Eng</Typography>
+                        </Box>
+                        <Chip label="2019-2021" size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'white', border: '1px solid', borderColor: 'divider' }} />
+                    </Box>
+                    <Box sx={{ p: 2 }}>
+                        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                            {['Python', 'Airflow', 'PostgreSQL'].map(tag => (
+                                <Chip key={tag} label={tag} size="small" sx={{ borderRadius: 1, height: 20, fontSize: '0.65rem', fontFamily: '"Fira Code", monospace', bgcolor: 'grey.100', color: 'text.secondary', border: '1px solid', borderColor: 'grey.200' }} />
+                            ))}
+                        </Stack>
+                    </Box>
+                </Paper>
+            </Box>
+        </Box>
+    </Box>
   );
 };
 

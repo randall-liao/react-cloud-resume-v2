@@ -5,24 +5,24 @@ import { createTheme, ThemeProvider, CssBaseline } from '@mui/material'
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     background: {
-      default: '#121212',
-      paper: '#1E1E1E',
+      default: '#f8fafc', // Tailwind bg-slate-50
+      paper: '#ffffff',
     },
     primary: {
-      main: '#00ff9d', // A nice terminal green
+      main: '#0369a1', // Tailwind primary color
     },
     secondary: {
-      main: '#00bcd4', // Cyan
+      main: '#64748b', // Tailwind text-muted
     },
     text: {
-      primary: '#e0e0e0',
-      secondary: '#b0b0b0',
+      primary: '#0f172a', // Tailwind text-main
+      secondary: '#64748b', // Tailwind text-muted
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontFamily: '"Fira Code", monospace',
       fontWeight: 700,
@@ -57,15 +57,15 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0, // Sharp edges for technical feel
+          borderRadius: 8,
         },
       },
     },
     MuiPaper: {
       styleOverrides: {
         root: {
-          backgroundImage: 'none', // Remove default gradient in dark mode
-          border: '1px solid #333',
+          backgroundImage: 'none',
+          border: 'none',
         },
       },
     },
