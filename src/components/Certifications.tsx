@@ -1,7 +1,8 @@
-import { Box, Typography, Stack, Paper } from '@mui/material';
+import { Box, Typography, Stack, Paper, useTheme, alpha } from '@mui/material';
 import StarsIcon from '@mui/icons-material/Stars';
 
 const Certifications = () => {
+  const theme = useTheme();
   return (
     <Box sx={{ px: 2, mb: 4 }}>
       <Paper
@@ -11,12 +12,13 @@ const Certifications = () => {
             border: '1px solid',
             borderColor: 'divider',
             p: 2.5,
-            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
+            boxShadow: theme.shadows[1],
             position: 'relative',
             overflow: 'hidden',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            bgcolor: 'background.paper'
         }}
       >
         <Box sx={{ position: 'relative', zIndex: 1, maxWidth: '60%' }}>
@@ -45,7 +47,8 @@ const Certifications = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 boxShadow: 3,
-                border: '2px solid white',
+                border: '2px solid',
+                borderColor: 'background.paper',
                 zIndex: 1
             }}
         >
@@ -61,7 +64,7 @@ const Certifications = () => {
                 right: 0,
                 height: '100%',
                 width: '66%',
-                background: 'linear-gradient(to left, #fffbeb, transparent)',
+                background: `linear-gradient(to left, ${alpha(theme.palette.warning.light, 0.1)}, transparent)`,
                 zIndex: 0
             }}
         />

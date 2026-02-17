@@ -1,9 +1,15 @@
-import { Box, Stack, Typography, IconButton } from '@mui/material';
+import { useContext } from 'react';
+import { Box, Stack, Typography, IconButton, useTheme, alpha } from '@mui/material';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import CodeIcon from '@mui/icons-material/Code';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { ColorModeContext } from '../theme/ColorModeContext';
 
 const Header = () => {
+  const theme = useTheme();
+  const { toggleColorMode, mode } = useContext(ColorModeContext);
+
   return (
     <Box
       component="header"
@@ -11,7 +17,7 @@ const Header = () => {
         position: 'sticky',
         top: 0,
         zIndex: 1100,
-        bgcolor: 'rgba(255, 255, 255, 0.9)',
+        bgcolor: alpha(theme.palette.background.paper, 0.8),
         backdropFilter: 'blur(12px)',
         borderBottom: '1px solid',
         borderColor: 'divider',
@@ -45,11 +51,19 @@ const Header = () => {
       </Stack>
 
       <Stack direction="row" spacing={0.5}>
-        <IconButton size="small" sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main', bgcolor: 'grey.100' } }}>
+        <IconButton size="small" sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main', bgcolor: 'action.hover' } }}>
             <CodeIcon />
         </IconButton>
-        <IconButton size="small" sx={{ color: 'primary.main', bgcolor: 'primary.50', '&:hover': { bgcolor: 'primary.100' } }}>
-            <LightModeIcon />
+        <IconButton
+            size="small"
+            onClick={toggleColorMode}
+            sx={{
+                color: 'primary.main',
+                bgcolor: alpha(theme.palette.primary.main, 0.1),
+                '&:hover': { bgcolor: alpha(theme.palette.primary.main, 0.2) }
+            }}
+        >
+            {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
         </IconButton>
       </Stack>
     </Box>

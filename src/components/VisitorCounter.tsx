@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Box, Typography, Stack, CircularProgress } from '@mui/material';
+import { Box, Typography, Stack, CircularProgress, useTheme, alpha } from '@mui/material';
 
 const VisitorCounter = () => {
+  const theme = useTheme();
   const [count, setCount] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -31,7 +32,7 @@ const VisitorCounter = () => {
             bottom: 0,
             left: 0,
             right: 0,
-            bgcolor: 'rgba(255, 255, 255, 0.9)',
+            bgcolor: alpha(theme.palette.background.paper, 0.9),
             backdropFilter: 'blur(12px)',
             borderTop: '1px solid',
             borderColor: 'divider',
@@ -54,7 +55,7 @@ const VisitorCounter = () => {
                             <Typography variant="h6" sx={{ fontFamily: '"Fira Code", monospace', fontWeight: 700, color: 'text.primary', lineHeight: 1 }}>
                                 {count?.toLocaleString()}
                             </Typography>
-                            <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', fontWeight: 700, color: '#059669', mb: 0.25 }}>
+                            <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', fontWeight: 700, color: 'success.main', mb: 0.25 }}>
                                 ▲ 12
                             </Typography>
                         </>
@@ -64,7 +65,7 @@ const VisitorCounter = () => {
 
             <Box
                 sx={{
-                    bgcolor: '#f8fafc',
+                    bgcolor: 'background.default',
                     borderRadius: 999,
                     border: '1px solid',
                     borderColor: 'divider',
@@ -81,7 +82,7 @@ const VisitorCounter = () => {
                         sx={{
                             position: 'absolute',
                             inset: 0,
-                            bgcolor: '#10b981',
+                            bgcolor: 'success.main',
                             borderRadius: '50%',
                             animation: 'pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite',
                             '@keyframes pulse-ring': {
@@ -90,15 +91,15 @@ const VisitorCounter = () => {
                             }
                         }}
                     />
-                    <Box sx={{ position: 'absolute', inset: 0, bgcolor: '#10b981', borderRadius: '50%', zIndex: 10 }} />
+                    <Box sx={{ position: 'absolute', inset: 0, bgcolor: 'success.main', borderRadius: '50%', zIndex: 10 }} />
                 </Box>
-                <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', fontWeight: 700, color: '#047857', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', fontWeight: 700, color: 'success.dark', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
                     System Online
                 </Typography>
             </Box>
         </Stack>
 
-        <Box sx={{ width: 128, height: 4, bgcolor: '#cbd5e1', borderRadius: 999, mx: 'auto' }} />
+        <Box sx={{ width: 128, height: 4, bgcolor: 'divider', borderRadius: 999, mx: 'auto', display: { xs: 'block', md: 'none' } }} />
     </Box>
   );
 };

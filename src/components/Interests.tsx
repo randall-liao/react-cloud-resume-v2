@@ -1,9 +1,10 @@
-import { Box, Typography, Stack, Paper, Grid } from '@mui/material';
+import { Box, Typography, Stack, Paper, Grid, useTheme, alpha } from '@mui/material';
 import InterestsIcon from '@mui/icons-material/Interests';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 
 const Interests = () => {
+  const theme = useTheme();
   return (
     <Box sx={{ px: 2, mb: 12 }}>
       <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2, px: 1 }}>
@@ -22,13 +23,14 @@ const Interests = () => {
                     borderRadius: 3,
                     border: '1px solid',
                     borderColor: 'divider',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+                    boxShadow: theme.shadows[1],
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     transition: 'all 0.2s',
-                    '&:hover': { bgcolor: 'background.default' }
+                    '&:hover': { bgcolor: 'background.default' },
+                    bgcolor: 'background.paper'
                 }}
             >
                 <Box
@@ -36,8 +38,8 @@ const Interests = () => {
                         width: 32,
                         height: 32,
                         borderRadius: '50%',
-                        bgcolor: '#fef2f2',
-                        color: '#ef4444',
+                        bgcolor: alpha(theme.palette.error.main, 0.1),
+                        color: 'error.main',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -67,13 +69,14 @@ const Interests = () => {
                     borderRadius: 3,
                     border: '1px solid',
                     borderColor: 'divider',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+                    boxShadow: theme.shadows[1],
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     transition: 'all 0.2s',
-                    '&:hover': { bgcolor: 'background.default' }
+                    '&:hover': { bgcolor: 'background.default' },
+                    bgcolor: 'background.paper'
                 }}
             >
                 <Box
@@ -81,8 +84,8 @@ const Interests = () => {
                         width: 32,
                         height: 32,
                         borderRadius: '50%',
-                        bgcolor: '#eef2ff',
-                        color: '#6366f1',
+                        bgcolor: alpha(theme.palette.primary.main, 0.1),
+                        color: 'primary.main',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
