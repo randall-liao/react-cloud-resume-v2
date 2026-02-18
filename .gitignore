@@ -127,3 +127,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Verification artifacts
+verification/
+*.png
+*.jpg
+
+# Verification artifacts
+verification/
+*.png
+*.jpg
+
+# Verification artifacts
+verification/
+*.png
+*.jpg
