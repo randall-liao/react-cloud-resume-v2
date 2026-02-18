@@ -70,7 +70,6 @@ react-cloud-resume-v2/
 │   ├── main.tsx          # Entry point
 │   └── ...
 ├── public/               # Static assets
-├── verification/         # Verification scripts and screenshots
 ├── verify_dashboard.py   # Mobile layout verification script
 ├── AGENT.md              # Rules for AI-assisted development
 ├── package.json          # Dependencies and scripts
@@ -79,22 +78,12 @@ react-cloud-resume-v2/
 
 ## ✅ Verification
 
-The project includes automated verification scripts using Playwright to ensure responsiveness and theme consistency.
+The project includes an automated verification script using Playwright to ensure the mobile layout is correct.
 
 1.  **Mobile Layout Verification:**
     Runs a headless browser check on `http://localhost:5173`.
     ```bash
     python3 verify_dashboard.py
-    ```
-
-2.  **Theme Verification:**
-    Checks both Light and Dark modes on desktop and mobile viewports. Note: This script expects the dev server to be running on port **3000**.
-    ```bash
-    # Start server on port 3000 in a separate terminal
-    npm run dev -- --port 3000
-
-    # Run verification
-    python3 verification/verify_theme.py
     ```
 
 ## ☁️ Deployment

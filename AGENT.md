@@ -22,4 +22,7 @@
 
 ## 5. Verification
 - **Mobile Layout:** Run `python3 verify_dashboard.py` to verify the mobile layout.
-- **Theme Consistency:** Run `python3 verification/verify_theme.py` to verify Light/Dark mode switching. Note: Ensure the dev server is running on port 3000 (`npm run dev -- --port 3000`) before running this script.
+
+## 6. Repository Hygiene
+- **Prevent Large Blobs:** DO NOT commit large binary files (e.g., `.png`, `.jpg`, `.mp4`, `.pdf`) or large generated artifacts to the repository.
+- **Gitignore:** If such files are generated during development or verification (e.g., screenshots), ensure they are added to `.gitignore` immediately.
