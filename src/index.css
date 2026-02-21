@@ -1,6 +1,68 @@
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #121212;
+@import "tailwindcss";
+@config "../tailwind.config.js";
+/* @tailwind base; - replaced by import */
+/* @tailwind components; - replaced by import */
+/* @tailwind utilities; - replaced by import */
+
+@layer base {
+  body {
+    @apply bg-background-light text-text-primary antialiased dark:bg-background-dark dark:text-slate-200;
+    font-family: 'Inter', sans-serif;
+  }
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8; 
+}
+
+/* Blinking Cursor */
+.blinking-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: #000;
+}
+.dark .blinking-cursor::after {
+  color: #fff;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Git Graph Styles */
+.git-line {
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #007acc 0%, #007acc 80%, rgba(0, 122, 204, 0.1) 100%);
+  z-index: 0;
+}
+.git-node {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #007acc;
+  position: absolute;
+  left: -30px;
+  top: 24px;
+  z-index: 10;
+}
+
+/* Syntax Highlighting */
+.token-keyword { color: #a626a4; }
+.token-string { color: #50a14f; }
+.token-key { color: #e45649; }

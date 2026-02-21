@@ -12,7 +12,7 @@ This project is built with performance, type safety, and "Engineer's Dashboard" 
 - **Language:** [TypeScript](https://www.typescriptlang.org/) (Strict typing enforced)
 - **Build Tool:** [Vite](https://vitejs.dev/) (Lightning-fast ESM-based development & optimized production bundling)
 - **UI Framework:** [Material-UI (MUI) v5](https://mui.com/)
-- **Styling:** Custom "Light" and "Dark" modes with console-like aesthetics (Monospace fonts, deep dark backgrounds).
+- **Styling:** Custom "Dark Mode" theme with console-like aesthetics (Monospace fonts, deep dark backgrounds).
 - **Routing:** None. This is a pure Single Page Application (SPA) with scroll-based navigation.
 
 ## ✨ Key Features
@@ -20,7 +20,6 @@ This project is built with performance, type safety, and "Engineer's Dashboard" 
 - **Zero-Cost Hosting:** No server-side rendering (SSR), no Node.js server maintenance.
 - **Serverless Integration:** Fetches live data (Visitor Count) from an AWS API Gateway + Lambda + DynamoDB backend using native `fetch`.
 - **Fully Responsive:** Mobile-first layout using MUI's Grid and Stack systems.
-- **Dynamic Theme:** Toggle between Light and Dark modes.
 - **AI-Native Development:** Includes an `AGENT.md` configuration to guide AI coding assistants (Google Antigravity, Gemini CLI, Stitch) on architectural constraints.
 
 ## 🚀 Getting Started
@@ -65,26 +64,15 @@ To run this project locally on your machine:
 react-cloud-resume-v2/
 ├── src/
 │   ├── components/       # Reusable UI components (Hero, Experience, etc.)
-│   ├── theme/            # Theme context and provider
+│   ├── theme/            # MUI theme definitions (Dark mode, typography)
 │   ├── App.tsx           # Main application layout
 │   ├── main.tsx          # Entry point
 │   └── ...
 ├── public/               # Static assets
-├── verify_dashboard.py   # Mobile layout verification script
 ├── AGENT.md              # Rules for AI-assisted development
 ├── package.json          # Dependencies and scripts
 └── vite.config.ts        # Vite configuration
 ```
-
-## ✅ Verification
-
-The project includes an automated verification script using Playwright to ensure the mobile layout is correct.
-
-1.  **Mobile Layout Verification:**
-    Runs a headless browser check on `http://localhost:5173`.
-    ```bash
-    python3 verify_dashboard.py
-    ```
 
 ## ☁️ Deployment
 

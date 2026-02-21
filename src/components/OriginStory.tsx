@@ -1,58 +1,22 @@
-import { Box, Typography, Stack, Paper, useTheme, alpha } from '@mui/material';
-import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 
-const OriginStory = () => {
-  const theme = useTheme();
+export default function OriginStory() {
   return (
-    <Box sx={{ px: 2, mb: 4 }}>
-      <Box
-        sx={{
-            p: '1px',
-            background: `linear-gradient(to bottom right, ${theme.palette.primary.main}, transparent)`,
-            borderRadius: 3,
-            boxShadow: theme.shadows[1]
-        }}
-      >
-        <Paper 
-            elevation={0}
-            sx={{ 
-                p: 2.5,
-                borderRadius: 3,
-                position: 'relative',
-                overflow: 'hidden',
-                height: '100%',
-                bgcolor: 'background.paper'
-            }}
-        >
-            <Box
-                sx={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    width: 128,
-                    height: 128,
-                    bgcolor: alpha(theme.palette.primary.main, 0.1),
-                    borderRadius: '50%',
-                    transform: 'translate(50%, -50%)',
-                    filter: 'blur(40px)',
-                    zIndex: 0
-                }}
-            />
-
-            <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1.5, position: 'relative', zIndex: 1 }}>
-                 <HistoryEduIcon sx={{ color: 'primary.main', fontSize: 20 }} />
-                 <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'text.primary', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                    Origin Story
-                 </Typography>
-            </Stack>
-
-            <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6, fontWeight: 500, position: 'relative', zIndex: 1 }}>
-                Forged in the fires of monolithic legacy systems, I now architect serverless microservices. My mission is to build scalable, resilient cloud infrastructure that developers love to deploy on.
-            </Typography>
-        </Paper>
-      </Box>
-    </Box>
+    <section className="relative">
+      <div className="bg-white dark:bg-surface-dark rounded-lg p-1 border-l-4 border-primary shadow-sm transition-colors">
+        <div className="p-6 md:p-8 bg-gray-50 dark:bg-[#161b22] rounded-r-lg transition-colors">
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+            <div className="flex-shrink-0 bg-primary/10 p-3 rounded-full text-primary">
+              <span className="material-icons text-3xl">cloud_queue</span>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2 font-display">Origin Story: The GeForce Analogy</h3>
+              <p className="text-slate-600 dark:text-slate-300 italic font-medium leading-relaxed font-serif">
+                "In 2018, I tried GeForce Now and realized my flimsy laptop was running a AAA game on a rig hundreds of miles away. The latency was negligible, the power was immense. That's when it clicked: computing isn't about the box in front of you, it's about the pipe and the powerhouse at the other end. I've been building those powerhouses ever since."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
-};
-
-export default OriginStory;
+}
