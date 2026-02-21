@@ -7,9 +7,9 @@
 - **Deployment:** The output must compile down to static HTML/JS/CSS via `npm run build` to be hosted on AWS S3 and served via CloudFront.
 
 ## 2. UI & Styling Ecosystem
-- **Component Library:** Material-UI (MUI) v5. 
-- **Icons:** `@mui/icons-material`.
-- **Styling Rules:** DO NOT write raw `.css` files or use Tailwind. Use MUI's `sx` prop, `<Box>`, `<Stack>`, and `<Grid>` components for all layouts and spacing. 
+- **Styling Framework:** Tailwind CSS v4.
+- **Icons:** `@mui/icons-material` and lucide-react.
+- **Styling Rules:** Use Tailwind utility classes for all styling, layouts, and spacing. Use `index.css` for custom global CSS variables or complex component layers if necessary. DO NOT use MUI's `sx` prop or `<Box>` components for new layouts.
 - **Aesthetic:** "The Engineer's Dashboard." Use deep, dark-mode colors by default (#121212 backgrounds). Use a Monospace font (e.g., Fira Code, Roboto Mono) for tech stacks, metrics, and project names to convey a highly technical, console-like feel.
 
 ## 3. State & Logic

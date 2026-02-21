@@ -21,13 +21,13 @@ The design aesthetic is best described as "The Engineer's Dashboard." The mood i
 * **Display Font (Inter, sans-serif):** Used for overarching layout, primary headlines, body text, and narrative content. Clean, modern, and highly legible.
 * **Monospace Font (Fira Code, monospace):** Used extensively for tech stacks, component names, metrics, IDE windows, and console-like elements to enforce the "developer" theme.
 
-## 4. Component Stylings
-* **Buttons:** Subtly rounded corners (`rounded-lg`), often appearing with transparent or ghost styles, border hovers, or solid primary colors for primary actions. They use subtle shadows.
-* **Cards/Containers:** Generously rounded corners (`rounded-xl`), creating distinct, pill-like or card-like boundaries. They utilize soft shadows in light mode and deeper, layered shadows in dark mode to signify elevation. Borders are subtle to maintain a clean aesthetic.
+## 4. Component Stylings (Tailwind CSS v4)
+* **Buttons:** Subtly rounded corners (`rounded-lg`), often appearing with transparent or ghost styles, border hovers, or solid primary colors for primary actions. They use subtle shadows (`shadow-sm`, `shadow-md`).
+* **Cards/Containers:** Generously rounded corners (`rounded-xl`), creating distinct, pill-like or card-like boundaries. They utilize soft shadows in light mode and deeper, layered shadows in dark mode to signify elevation. Borders are subtle to maintain a clean aesthetic (`border border-slate-700/50` or similar).
 * **IDE Code Windows:** Replicates code editors with Mac-style window controls (red, yellow, green dots), tab navigation (`profile.json`), and syntax-highlighted code lines with numerical gutters.
 * **Inputs/Forms:** Typically bordered with soft grays in light mode or faint transparencies in dark mode (`surface-border`).
 
 ## 5. Layout Principles
-* **Spacing:** Generous and airy whitespace using standard padding multipliers, providing breathing room between sections (`gap-8`, `space-y-6`). 
-* **Alignment:** Grid-based and responsive. The layout employs a column structure that elegantly breaks down from desktop side-by-side modules into stacked mobile views.
+* **Spacing:** Generous and airy whitespace using standard padding multipliers (Tailwind's `gap-8`, `space-y-6`), providing breathing room between sections. 
+* **Alignment:** Grid-based and responsive. The layout employs a Flexbox or CSS Grid column structure (e.g., `flex-col md:flex-row`) that elegantly breaks down from desktop side-by-side modules into stacked mobile views.
 * **Status Elements:** Frequent use of micro-animations (like a pulsing green "Open to Work" dot or a blinking IDE cursor) to create a dynamic, "live system" feel.
