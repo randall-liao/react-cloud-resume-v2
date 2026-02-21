@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import resumeData from '../data/resume.json';
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(true);
+  const { footer } = resumeData;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,11 +30,11 @@ export default function Footer() {
           <div className="flex items-center px-2 py-0.5 rounded bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5 animate-pulse"></span>
             <span className="hidden sm:inline font-semibold text-green-700 dark:text-green-500">System: </span>
-            <span className="text-green-700 dark:text-green-500 ml-1 font-bold">Healthy</span>
+            <span className="text-green-700 dark:text-green-500 ml-1 font-bold">{footer.systemStatus}</span>
           </div>
           <div className="hidden sm:flex items-center">
             <span className="material-icons text-[14px] mr-1 text-slate-400 dark:text-primary">dns</span>
-            <span className="text-slate-600 dark:text-slate-400">us-east-1</span>
+            <span className="text-slate-600 dark:text-slate-400">{footer.region}</span>
           </div>
           <div className="flex items-center group cursor-pointer relative hover:bg-slate-50 dark:hover:bg-white/5 px-2 py-1 rounded transition-colors">
             <span className="material-icons text-[14px] mr-1 text-orange-500 dark:text-orange-400">visibility</span>
@@ -44,7 +46,7 @@ export default function Footer() {
         </div>
         <div className="flex items-center">
           <span className="mr-2 hidden sm:inline text-slate-400">Latency:</span>
-          <span className="text-blue-600 dark:text-blue-400 font-semibold">24ms</span>
+          <span className="text-blue-600 dark:text-blue-400 font-semibold">{footer.latency}</span>
           <div className="ml-4 pl-4 border-l border-slate-200 dark:border-slate-700 hidden sm:block text-slate-400">
             Built with <i className="fab fa-react mx-1 text-blue-500"></i> &amp; Tailwind
           </div>
