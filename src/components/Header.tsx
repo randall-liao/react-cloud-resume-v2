@@ -1,73 +1,35 @@
-import { useContext } from 'react';
-import { Box, Stack, Typography, IconButton, useTheme, alpha } from '@mui/material';
-import TerminalIcon from '@mui/icons-material/Terminal';
-import CodeIcon from '@mui/icons-material/Code';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { ColorModeContext } from '../theme/ColorModeContext';
 
-const Header = () => {
-  const theme = useTheme();
-  const { toggleColorMode, mode } = useContext(ColorModeContext);
+interface HeaderProps {
+  darkMode: boolean;
+  setDarkMode: (val: boolean) => void;
+}
 
+export default function Header({ darkMode, setDarkMode }: HeaderProps) {
   return (
-    <Box
-      component="header"
-      sx={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 1100,
-        bgcolor: alpha(theme.palette.background.paper, 0.8),
-        backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid',
-        borderColor: 'divider',
-        px: 2,
-        py: 1.5,
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
-      }}
-    >
-      <Stack direction="row" spacing={1.5} alignItems="center">
-        <Box
-            sx={{
-                width: 32,
-                height: 32,
-                borderRadius: '50%',
-                bgcolor: 'primary.main',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                boxShadow: '0 4px 6px -1px rgba(59, 130, 246, 0.5)'
-            }}
-        >
-            <TerminalIcon fontSize="small" />
-        </Box>
-        <Typography variant="h6" sx={{ fontWeight: 700, letterSpacing: '-0.025em', color: 'text.primary' }}>
-            Cloud Resume
-        </Typography>
-      </Stack>
-
-      <Stack direction="row" spacing={0.5}>
-        <IconButton size="small" sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main', bgcolor: 'action.hover' } }}>
-            <CodeIcon />
-        </IconButton>
-        <IconButton
-            size="small"
-            onClick={toggleColorMode}
-            sx={{
-                color: 'primary.main',
-                bgcolor: alpha(theme.palette.primary.main, 0.1),
-                '&:hover': { bgcolor: alpha(theme.palette.primary.main, 0.2) }
-            }}
-        >
-            {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
-        </IconButton>
-      </Stack>
-    </Box>
+    <header className="fixed top-0 w-full z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-surface-border transition-colors">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="flex items-center space-x-2">
+          <span className="text-primary font-mono font-bold text-xl">&lt;Randall <span>/</span>&gt;</span>
+        </div>
+        <div className="flex items-center space-x-4">
+          <a className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-primary/20 transition-colors text-slate-600 dark:text-slate-300" href="#">
+            <i className="fab fa-github text-xl"></i>
+          </a>
+          <a className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-primary/20 transition-colors text-slate-600 dark:text-slate-300" href="#">
+            <i className="fab fa-linkedin text-xl"></i>
+          </a>
+          <a className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-primary/20 transition-colors text-slate-600 dark:text-slate-300" href="#">
+            <i className="fas fa-envelope text-xl"></i>
+          </a>
+          <button 
+            aria-label="Toggle theme" 
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-primary/20 transition-colors text-slate-600 dark:text-yellow-400 group relative"
+          >
+            <span className="material-symbols-outlined text-[24px]">{darkMode ? 'light_mode' : 'dark_mode'}</span>
+          </button>
+        </div>
+      </div>
+    </header>
   );
-};
-
-export default Header;
+}

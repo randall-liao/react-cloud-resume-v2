@@ -128,17 +128,5 @@ dist-ssr
 *.sln
 *.sw?
 
-# Verification artifacts
-verification/
-*.png
-*.jpg
-
-# Verification artifacts
-verification/
-*.png
-*.jpg
-
-# Verification artifacts
-verification/
-*.png
-*.jpg
+.vite/
+.stitch-mcp/

@@ -1,44 +1,43 @@
-import { Box, Container, Grid } from '@mui/material';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import OriginStory from './components/OriginStory';
-import Projects from './components/Projects';
+import CommitHistory from './components/CommitHistory';
 import Certifications from './components/Certifications';
-import Interests from './components/Interests';
-import VisitorCounter from './components/VisitorCounter';
+import Interests from './components/Interests'; // Renamed from PrecisionCooking block
+import Footer from './components/Footer';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
   return (
-    <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Header />
+    <div className="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 antialiased min-h-screen pb-20 relative font-display">
+      <div className="fixed top-20 right-0 -z-10 opacity-20 pointer-events-none overflow-hidden h-96 w-96">
+        <img alt="Abstract Pattern" className="w-full h-full object-cover blur-3xl rounded-full" src="/assets/background.png" />
+      </div>
 
-      <Box component="main" sx={{ flex: 1, overflowY: 'auto' }}>
-        <Container maxWidth="xl" disableGutters sx={{ pb: { xs: 10, md: 4 } }}>
-            <Grid container spacing={{ xs: 0, md: 3 }} sx={{ mt: { xs: 0, md: 2 }, px: { xs: 0, md: 2 } }}>
-                {/* Left Column: Profile & Bio */}
-                <Grid item xs={12} md={4} lg={3}>
-                    <Hero />
-                    <OriginStory />
-                </Grid>
+      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
 
-                {/* Middle Column: Main Work */}
-                <Grid item xs={12} md={8} lg={6}>
-                    <Projects />
-                </Grid>
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 space-y-12">
+        <Hero />
+        <OriginStory />
+        <CommitHistory />
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Certifications />
+            <Interests />
+        </section>
+      </main>
 
-                {/* Right Column: Extras */}
-                <Grid item xs={12} md={12} lg={3}>
-                     <Box sx={{ display: { xs: 'block', md: 'flex', lg: 'block' }, gap: 3 }}>
-                        <Box sx={{ flex: 1 }}><Certifications /></Box>
-                        <Box sx={{ flex: 1 }}><Interests /></Box>
-                     </Box>
-                </Grid>
-            </Grid>
-        </Container>
-      </Box>
-
-      <VisitorCounter />
-    </Box>
+      <Footer />
+    </div>
   );
 }
 

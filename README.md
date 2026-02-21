@@ -11,16 +11,16 @@ This project is built with performance, type safety, and "Engineer's Dashboard" 
 - **Core:** [React 18+](https://react.dev/)
 - **Language:** [TypeScript](https://www.typescriptlang.org/) (Strict typing enforced)
 - **Build Tool:** [Vite](https://vitejs.dev/) (Lightning-fast ESM-based development & optimized production bundling)
-- **UI Framework:** [Material-UI (MUI) v5](https://mui.com/)
-- **Styling:** Custom "Light" and "Dark" modes with console-like aesthetics (Monospace fonts, deep dark backgrounds).
+- **Styling Framework:** [Tailwind CSS v4](https://tailwindcss.com/) (Utility-first CSS for rapid UI development)
+- **Styling:** Custom "Dark Mode" theme with console-like aesthetics.
 - **Routing:** None. This is a pure Single Page Application (SPA) with scroll-based navigation.
 
 ## ✨ Key Features
 
 - **Zero-Cost Hosting:** No server-side rendering (SSR), no Node.js server maintenance.
 - **Serverless Integration:** Fetches live data (Visitor Count) from an AWS API Gateway + Lambda + DynamoDB backend using native `fetch`.
-- **Fully Responsive:** Mobile-first layout using MUI's Grid and Stack systems.
-- **Dynamic Theme:** Toggle between Light and Dark modes.
+- **Fully Responsive:** Mobile-first layout dynamically adjusting with Tailwind's utility classes.
+- **Theme Switching:** Persistent "Dark Mode" support utilizing CSS classes and React state.
 - **AI-Native Development:** Includes an `AGENT.md` configuration to guide AI coding assistants (Google Antigravity, Gemini CLI, Stitch) on architectural constraints.
 
 ## 🚀 Getting Started
@@ -64,27 +64,16 @@ To run this project locally on your machine:
 ```text
 react-cloud-resume-v2/
 ├── src/
-│   ├── components/       # Reusable UI components (Hero, Experience, etc.)
-│   ├── theme/            # Theme context and provider
-│   ├── App.tsx           # Main application layout
+│   ├── components/       # Reusable UI components (Hero, CommitHistory, Certifications, etc)
+│   ├── App.tsx           # Main application layout and theme provider
 │   ├── main.tsx          # Entry point
+│   ├── index.css         # Global Tailwind CSS directives
 │   └── ...
 ├── public/               # Static assets
-├── verify_dashboard.py   # Mobile layout verification script
 ├── AGENT.md              # Rules for AI-assisted development
 ├── package.json          # Dependencies and scripts
 └── vite.config.ts        # Vite configuration
 ```
-
-## ✅ Verification
-
-The project includes an automated verification script using Playwright to ensure the mobile layout is correct.
-
-1.  **Mobile Layout Verification:**
-    Runs a headless browser check on `http://localhost:5173`.
-    ```bash
-    python3 verify_dashboard.py
-    ```
 
 ## ☁️ Deployment
 

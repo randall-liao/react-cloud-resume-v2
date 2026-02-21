@@ -1,12 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-import { ColorModeProvider } from './theme/ColorModeProvider';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.tsx'
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ColorModeProvider>
-      <App />
-    </ColorModeProvider>
+    <App />
   </React.StrictMode>,
-);
+)

@@ -1,115 +1,34 @@
-import { Box, Typography, Stack, Paper, Grid, useTheme, alpha } from '@mui/material';
-import InterestsIcon from '@mui/icons-material/Interests';
-import ThermostatIcon from '@mui/icons-material/Thermostat';
-import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 
-const Interests = () => {
-  const theme = useTheme();
+export default function Interests() {
   return (
-    <Box sx={{ px: 2, mb: 12 }}>
-      <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2, px: 1 }}>
-        <InterestsIcon color="primary" fontSize="small" />
-        <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'text.secondary', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-            Side Channel
-        </Typography>
-      </Stack>
-
-      <Grid container spacing={1.5}>
-        <Grid item xs={6}>
-            <Paper
-                elevation={0}
-                sx={{
-                    p: 2,
-                    borderRadius: 3,
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    boxShadow: theme.shadows[1],
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    transition: 'all 0.2s',
-                    '&:hover': { bgcolor: 'background.default' },
-                    bgcolor: 'background.paper'
-                }}
-            >
-                <Box
-                    sx={{
-                        width: 32,
-                        height: 32,
-                        borderRadius: '50%',
-                        bgcolor: alpha(theme.palette.error.main, 0.1),
-                        color: 'error.main',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mb: 1
-                    }}
-                >
-                    <ThermostatIcon fontSize="small" />
-                </Box>
-                <Box>
-                    <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'text.primary' }}>
-                        Sous Vide
-                    </Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1 }}>
-                        IoT Temp Control
-                    </Typography>
-                    <Typography variant="h6" sx={{ fontFamily: '"Fira Code", monospace', fontWeight: 700, color: 'text.primary' }}>
-                        132.5°F
-                    </Typography>
-                </Box>
-            </Paper>
-        </Grid>
-        <Grid item xs={6}>
-            <Paper
-                elevation={0}
-                sx={{
-                    p: 2,
-                    borderRadius: 3,
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    boxShadow: theme.shadows[1],
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    transition: 'all 0.2s',
-                    '&:hover': { bgcolor: 'background.default' },
-                    bgcolor: 'background.paper'
-                }}
-            >
-                <Box
-                    sx={{
-                        width: 32,
-                        height: 32,
-                        borderRadius: '50%',
-                        bgcolor: alpha(theme.palette.primary.main, 0.1),
-                        color: 'primary.main',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mb: 1
-                    }}
-                >
-                    <FlightTakeoffIcon fontSize="small" />
-                </Box>
-                <Box>
-                    <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'text.primary' }}>
-                        Drone Pilot
-                    </Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1 }}>
-                        FPV Racing
-                    </Typography>
-                    <Typography variant="h6" sx={{ fontFamily: '"Fira Code", monospace', fontWeight: 700, color: 'text.primary' }}>
-                        4S LiPo
-                    </Typography>
-                </Box>
-            </Paper>
-        </Grid>
-      </Grid>
-    </Box>
+    <div className="bg-white dark:bg-surface-dark border border-gray-200 dark:border-surface-border rounded-lg p-6 relative overflow-hidden shadow-sm hover:shadow-md transition-all group">
+      <div className="flex items-start justify-between mb-4">
+        <div>
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white">Precision Cooking</h3>
+          <p className="text-primary font-medium text-sm mt-1">Sous Vide Enthusiast</p>
+        </div>
+        <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 border border-red-500/20">
+          <span className="material-icons">thermostat</span>
+        </div>
+      </div>
+      <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+        Applying the same fault-tolerant logic to steak as I do to servers. Consistent temperature control ensures 99.99% reliability on medium-rare outcomes.
+      </p>
+      <div className="bg-black/5 dark:bg-black/20 border border-black/5 dark:border-white/5 rounded p-3 font-mono text-xs text-slate-500 dark:text-slate-400 flex justify-between items-center">
+        <div className="flex flex-col">
+           <span className="uppercase text-[10px] text-slate-400 mb-1">Target Temp</span>
+           <span className="text-slate-900 dark:text-white font-bold text-base">54.5°C</span>
+        </div>
+        <div className="flex flex-col text-right">
+           <span className="uppercase text-[10px] text-slate-400 mb-1">Duration</span>
+           <span className="text-slate-900 dark:text-white font-bold text-base">2h 30m</span>
+        </div>
+        <div className="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+        <div className="flex items-center text-green-600 dark:text-green-500 font-bold">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2" title="Heater Active"></span>
+            ACTIVE
+        </div>
+      </div>
+    </div>
   );
-};
-
-export default Interests;
+}

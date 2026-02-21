@@ -9,8 +9,8 @@
 ## 2. UI & Styling Ecosystem
 - **Component Library:** Material-UI (MUI) v5. 
 - **Icons:** `@mui/icons-material`.
-- **Styling Rules:** DO NOT write raw `.css` files or use Tailwind. Use MUI's `sx` prop, `<Box>`, `<Stack>`, and `<Grid>` components for all layouts and spacing. Ensure compatibility with both Light and Dark modes defined in `src/theme/theme.ts`.
-- **Aesthetic:** "The Engineer's Dashboard." Supports both Light and Dark modes. Dark mode uses deep colors (#0a0a0a), Light mode uses soft grays/whites (#f8fafc). Use a Monospace font (e.g., Fira Code, Roboto Mono) for tech stacks, metrics, and project names.
+- **Styling Rules:** DO NOT write raw `.css` files or use Tailwind. Use MUI's `sx` prop, `<Box>`, `<Stack>`, and `<Grid>` components for all layouts and spacing. 
+- **Aesthetic:** "The Engineer's Dashboard." Use deep, dark-mode colors by default (#121212 backgrounds). Use a Monospace font (e.g., Fira Code, Roboto Mono) for tech stacks, metrics, and project names to convey a highly technical, console-like feel.
 
 ## 3. State & Logic
 - Keep state management local using standard React hooks (`useState`, `useEffect`). Do not install Redux or Zustand.
@@ -19,10 +19,3 @@
 ## 4. Code Quality
 - Strictly enforce TypeScript interfaces for all component props.
 - Keep components modular. Break down large sections (Hero, Experience, Certifications) into their own `.tsx` files inside `src/components/`.
-
-## 5. Verification
-- **Mobile Layout:** Run `python3 verify_dashboard.py` to verify the mobile layout.
-
-## 6. Repository Hygiene
-- **Prevent Large Blobs:** DO NOT commit large binary files (e.g., `.png`, `.jpg`, `.mp4`, `.pdf`) or large generated artifacts to the repository.
-- **Gitignore:** If such files are generated during development or verification (e.g., screenshots), ensure they are added to `.gitignore` immediately.
