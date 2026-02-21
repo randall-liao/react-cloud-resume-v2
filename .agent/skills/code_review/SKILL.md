@@ -13,12 +13,12 @@ This skill provides a structured approach and a "Master Prompt" for conducting c
 
 **Context:**
 I am building the frontend for the **Cloud Resume Challenge**.
-- **Stack:** React 18, TypeScript 5, Vite 4, Material UI (MUI) v5.
+- **Stack:** React 18, TypeScript 5, Vite 4, Tailwind CSS v4.
 - **Hosting:** AWS S3 (Static Website Hosting) + CloudFront CDN.
 - **Constraints:**
   - 100% Client-Side Rendering (CSR).
   - No routing libraries (Single Page Scroll Architecture).
-  - Styling strictly via MUI `sx` props and components (No raw CSS or Tailwind).
+  - Styling strictly via Tailwind CSS utility classes (No MUI or raw CSS).
   - Local state management only (No Redux/Zustand).
   - "Engineer's Dashboard" aesthetic (Dark mode, Monospace fonts).
 
@@ -33,12 +33,12 @@ Perform a comprehensive code review of the provided code. Focus on the following
 ### 2. React & TypeScript Quality
 - **Type Safety:** Flag any use of `any`, implicit `any`, or loose typing. Suggest stricter interfaces or utility types.
 - **Component Hygiene:** Check for correct usage of `useEffect` (dependency arrays), unnecessary re-renders, and proper memoization (`useMemo`, `useCallback`) *only where performance is impacted*.
-- **MUI Best Practices:** Ensure styling is done via the `sx` prop or `styled` API. Flag any inline `style={{}}` usage or traditional CSS files.
+- **Tailwind Best Practices:** Ensure styling is done via Tailwind classes. Flag any inline `style={{}}` usage or traditional CSS files, unless defining global CSS variables.
 - **Project Structure:** Verify that components are modular, reusable, and follow a logical directory structure (e.g., `src/components`, `src/hooks`).
 
 ### 3. Maintainability, Security & A11y
 - **Security:** check for XSS vulnerabilities (e.g., dangerouslySetInnerHTML) and proper sanitization of API data.
-- **Accessibility (A11y):** Ensure semantic HTML is used (even within MUI components), adequate color contrast for the dark theme, and proper ARIA labels for interactive elements.
+- **Accessibility (A11y):** Ensure semantic HTML is used, adequate color contrast for the dark theme, and proper ARIA labels for interactive elements.
 - **Clean Code:** Identify "magic numbers," hardcoded strings that should be constants, or overly complex logic that can be simplified.
 
 ### Output Format
@@ -52,4 +52,4 @@ Please structure your review as follows:
 4.  **Nitpicks & Polish:** Minor styling adjustments, variable naming, or comments.
 5.  **Cloud/Next Steps:** Specific advice on deployment or AWS integration based on what you see.
 
-**Important:** Be critical but constructive. If you see code that violates the "Engineer's Dashboard" aesthetic or the "No raw CSS" rule, flag it immediately.
+**Important:** Be critical but constructive. If you see code that violates the "Engineer's Dashboard" aesthetic or uses raw CSS instead of Tailwind, flag it immediately.
