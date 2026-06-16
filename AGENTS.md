@@ -10,6 +10,7 @@ Keep it short. Use it to find the source of truth, not to duplicate it.
 - Prefer small, reviewable changes with a narrow blast radius.
 - Do not automatically create Pull Requests; wait for explicit human instruction to open a PR.
 - Always add or update relevant unit/smoke tests when modifying code or components, and ensure all tests run and pass.
+- All agent communications, replies, logs, code comments, and documentation must be strictly in English.
 - Before wrapping up, run `npm run validate`.
 
 
@@ -58,6 +59,7 @@ Treat Remotion, shadcn, and WSL bridge skills as opt-in tooling. They are not pa
 - No global state managers (`redux`, `zustand`, `jotai`, `recoil`, `mobx`)
 - No MUI layout imports or `sx` prop
 - No committed AWS secrets
+- All agent communications, replies, logs, code comments, and documentation must be written strictly in English
 - Root scripts must operate through the workspace root, not by assuming app files live at repo root
 - Domain-level subtree workflow lives in `docs/git_subtree.md`; use it when a task involves extraction, sync, or external domain ownership
 - `AGENTS.md`, core docs, and markdown links must validate
