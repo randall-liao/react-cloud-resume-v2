@@ -152,3 +152,7 @@ stitch_downloads/
 
 # Local-only scratch folder
 /temp/
+
+# Stryker mutation testing
+reports/mutation/
+.stryker-tmp/

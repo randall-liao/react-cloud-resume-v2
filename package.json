@@ -18,9 +18,12 @@
     "lint": "turbo run lint",
     "preview": "npm run preview --workspace @cloud-resume-v2/web --",
     "test": "turbo run test && python3 scripts/test_agents_scripts.py",
+    "test:mutation": "turbo run test:mutation --filter=./packages/*",
     "validate": "npm run docs:validate && python3 scripts/lint_agents.py && npm run lint && npm run build && npm run test && bash scripts/validate-dist.sh apps/web/dist"
   },
   "devDependencies": {
+    "@stryker-mutator/core": "^9.6.1",
+    "@stryker-mutator/vitest-runner": "^9.6.1",
     "@typescript-eslint/eslint-plugin": "^8.59.2",
     "@typescript-eslint/parser": "^8.59.2",
     "@vitejs/plugin-react": "^6.0.1",
