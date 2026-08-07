@@ -156,3 +156,6 @@ stitch_downloads/
 # Stryker mutation testing
 **/reports/mutation/
 .stryker-tmp/
+
+# Local marketing draft (not part of the product docs)
+/linkedin_post.md
