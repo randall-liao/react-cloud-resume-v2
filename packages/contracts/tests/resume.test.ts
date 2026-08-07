@@ -4,7 +4,7 @@ import validResumeData from '../src/resume.json';
 
 /** Deep-clone valid resume JSON and set a nested value by dotted/bracket path. */
 function withPath(path: string, value: unknown): unknown {
-  const root = structuredClone(validResumeData) as Record<string, unknown>;
+  const root = JSON.parse(JSON.stringify(validResumeData)) as Record<string, unknown>;
   const tokens = path
     .replace(/\[(\d+)\]/g, '.$1')
     .split('.')
