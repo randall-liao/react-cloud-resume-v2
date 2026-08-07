@@ -154,5 +154,5 @@ stitch_downloads/
 /temp/
 
 # Stryker mutation testing
-reports/mutation/
+**/reports/mutation/
 .stryker-tmp/
