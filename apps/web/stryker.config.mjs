@@ -4,13 +4,17 @@ export default {
   testRunner: 'vitest',
   plugins: ['@stryker-mutator/vitest-runner'],
   vitest: {
-    configFile: 'vitest.config.ts',
+    configFile: 'vite.config.ts',
     related: true,
   },
+  // Focus on units exercised by the Vitest suite (components, App shell, feature flags).
+  // Entry mains and the GSAP-heavy Spyfall intro are excluded: mains are bootstraps, and
+  // Spyfall timelines are mocked in tests so mutants there mostly inflate noise/runtime.
   mutate: [
-    'src/**/*.ts',
+    'src/App.tsx',
+    'src/components/**/*.{ts,tsx}',
+    'src/config/**/*.{ts,tsx}',
     '!src/**/*.d.ts',
-    '!src/index.ts',
   ],
   ignoreStatic: true,
   reporters: ['clear-text', 'progress', 'html', 'json'],

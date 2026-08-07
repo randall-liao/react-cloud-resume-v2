@@ -64,16 +64,20 @@ This file describes what good code looks like in `cloud-resume-v2`. For the mech
 | `bash scripts/validate-dist.sh apps/web/dist` | Validates the built artifact for S3/CloudFront deployment |
 | `npm run validate` | Runs the full local validation stack |
 
-### Mutation testing (on-demand, packages only)
+### Mutation testing (on-demand)
 
-Mutation score measures how effectively package unit tests detect behavioral faults. It is **not** part of `npm run validate` or CI.
+Mutation score measures how effectively unit tests detect behavioral faults across packages and the web app. It is **not** part of `npm run validate` or CI.
 
 | Command | Purpose |
 | --- | --- |
-| `npm run test:mutation` | Run Stryker via Turbo for `packages/contracts` and `packages/frontend-core` |
+| `npm run test:mutation` | Run Stryker via Turbo for `packages/*` and `apps/web` |
 
-- Scope: `src/**/*.ts` in those packages (excludes `src/index.ts` and JSON fixtures)
-- Reports (gitignored): `packages/<pkg>/reports/mutation/mutation.html` and `mutation.json`
+- Scope:
+  - `packages/contracts` and `packages/frontend-core`: `src/**/*.ts` (excludes re-export `src/index.ts` and JSON fixtures)
+  - `apps/web`: `src/App.tsx`, `src/components/**`, `src/config/**` (excludes entry mains and the GSAP-heavy Spyfall intro, whose timelines are mocked in unit tests)
+- Each workspace runs its own Vitest suite against mutants in that workspace’s source (so web component tests score web components; package tests score package sources)
+- Reports (gitignored): `<workspace>/reports/mutation/mutation.html` and `mutation.json`
+- Other Stryker scratch paths (`reports/`, `.stryker-tmp/`, `stryker.log`) are also gitignored
 - Thresholds are informational only; a low score does not fail the script
 - Use survived mutants to judge suite strength (including LLM-generated tests)
 

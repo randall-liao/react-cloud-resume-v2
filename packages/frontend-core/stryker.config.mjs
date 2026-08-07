@@ -26,4 +26,5 @@ export default {
     break: null,
   },
   tempDirName: '.stryker-tmp',
+  cleanTempDir: 'always',
 };

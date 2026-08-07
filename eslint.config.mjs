@@ -8,7 +8,13 @@ export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    ignores: ['**/dist', 'eslint.config.mjs', '**/node_modules'],
+    ignores: [
+      '**/dist',
+      'eslint.config.mjs',
+      '**/node_modules',
+      '**/.stryker-tmp/**',
+      '**/reports/**',
+    ],
   },
   {
     files: ['**/*.{js,jsx,ts,tsx,cjs,mjs}'],

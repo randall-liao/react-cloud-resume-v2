@@ -153,9 +153,15 @@ stitch_downloads/
 # Local-only scratch folder
 /temp/
 
-# Stryker mutation testing
-**/reports/mutation/
+# Stryker mutation testing artifacts (never commit)
+**/reports/
+reports/
+**/.stryker-tmp/
 .stryker-tmp/
+**/stryker.log
+stryker.log
+**/mutation.html
+**/mutation.json
 
 # Local marketing draft (not part of the product docs)
 /linkedin_post.md
