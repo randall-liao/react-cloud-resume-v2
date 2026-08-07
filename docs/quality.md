@@ -52,7 +52,7 @@
 
 **Known Debt**
 
-- None
+- Mutation score is measurable via `npm run test:mutation` (on-demand; no baseline recorded in this index yet)
 
 ### `packages/frontend-core/` — Shared Frontend Runtime Layer
 **Grade: 🟢 A**
@@ -66,7 +66,7 @@
 
 **Known Debt**
 
-- None
+- Mutation score is measurable via `npm run test:mutation` (on-demand; no baseline recorded in this index yet)
 
 ### `CI/CD Pipeline` — Automation Layer
 **Grade: 🟢 A-**

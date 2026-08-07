@@ -90,6 +90,7 @@ Treat Remotion, shadcn, and WSL bridge skills as opt-in tooling. They are not pa
 ## Planning and External files Reference (to suppress orphaned files warnings)
 - [docs/superpowers/specs/2026-08-07-mutation-testing-design.md](docs/superpowers/specs/2026-08-07-mutation-testing-design.md)
 - [docs/superpowers/plans/2026-08-07-mutation-testing.md](docs/superpowers/plans/2026-08-07-mutation-testing.md)
+- [linkedin_post.md](linkedin_post.md)
 - [.agent/skills/design-md/SKILL.md](.agent/skills/design-md/SKILL.md)
 - [.agent/skills/design-md/examples/DESIGN.md](.agent/skills/design-md/examples/DESIGN.md)
 - [.agent/skills/enhance-prompt/SKILL.md](.agent/skills/enhance-prompt/SKILL.md)

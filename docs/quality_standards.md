@@ -64,6 +64,19 @@ This file describes what good code looks like in `cloud-resume-v2`. For the mech
 | `bash scripts/validate-dist.sh apps/web/dist` | Validates the built artifact for S3/CloudFront deployment |
 | `npm run validate` | Runs the full local validation stack |
 
+### Mutation testing (on-demand, packages only)
+
+Mutation score measures how effectively package unit tests detect behavioral faults. It is **not** part of `npm run validate` or CI.
+
+| Command | Purpose |
+| --- | --- |
+| `npm run test:mutation` | Run Stryker via Turbo for `packages/contracts` and `packages/frontend-core` |
+
+- Scope: `src/**/*.ts` in those packages (excludes `src/index.ts` and JSON fixtures)
+- Reports (gitignored): `packages/<pkg>/reports/mutation/mutation.html` and `mutation.json`
+- Thresholds are informational only; a low score does not fail the script
+- Use survived mutants to judge suite strength (including LLM-generated tests)
+
 ## 7. Remaining Enhancements
 
 See [plans/agent_gap_analysis.md](plans/agent_gap_analysis.md) for the backlog. The main remaining quality gaps are:

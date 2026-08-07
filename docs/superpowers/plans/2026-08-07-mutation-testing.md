@@ -401,10 +401,10 @@ Do **not** change domain grades in this task.
 In `AGENTS.md` under `## Planning and External files Reference`, add:
 
 ```markdown
-- [docs/superpowers/plans/2026-08-07-mutation-testing.md](docs/superpowers/plans/2026-08-07-mutation-testing.md)
+- docs/superpowers/plans/2026-08-07-mutation-testing.md
 ```
 
-Keep the existing design-spec link.
+Add that path as a markdown link from repo-root `AGENTS.md`. Keep the existing design-spec link.
 
 - [ ] **Step 4: Validate docs and agents lint**
 
