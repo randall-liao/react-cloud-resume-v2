@@ -24,6 +24,11 @@
     "fmt": {
       "dependsOn": [],
       "outputs": []
+    },
+    "test:mutation": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "outputs": []
     }
   }
 }

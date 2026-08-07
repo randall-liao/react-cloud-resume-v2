@@ -25,6 +25,7 @@
 **Known Debt**
 
 - `Hero.tsx` contains a dense inline IDE snippet that could be extracted if the section grows.
+- Mutation score is measurable via `npm run test:mutation` (on-demand; no baseline recorded in this index yet)
 
 ### `apps/web/src/spyfall/` — Spyfall Arena Intro Page
 **Grade: 🟡 B**
@@ -52,7 +53,7 @@
 
 **Known Debt**
 
-- None
+- Mutation score is measurable via `npm run test:mutation` (on-demand; no baseline recorded in this index yet)
 
 ### `packages/frontend-core/` — Shared Frontend Runtime Layer
 **Grade: 🟢 A**
@@ -66,7 +67,7 @@
 
 **Known Debt**
 
-- None
+- Mutation score is measurable via `npm run test:mutation` (on-demand; no baseline recorded in this index yet)
 
 ### `CI/CD Pipeline` — Automation Layer
 **Grade: 🟢 A-**
