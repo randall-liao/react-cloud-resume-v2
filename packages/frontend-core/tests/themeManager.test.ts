@@ -125,4 +125,27 @@ describe('ThemeManager', () => {
       expect(document.documentElement.classList.contains('theme-host')).toBe(true);
     });
   });
+
+  describe('SSR environment guards', () => {
+    afterEach(() => {
+      vi.unstubAllGlobals();
+    });
+
+    it('getInitialTheme returns false when window is undefined', () => {
+      vi.stubGlobal('window', undefined);
+      expect(new ThemeManager().getInitialTheme()).toBe(false);
+    });
+
+    it('saveTheme is a no-op when window is undefined', () => {
+      vi.stubGlobal('window', undefined);
+      expect(() => new ThemeManager().saveTheme(true)).not.toThrow();
+      expect(() => new ThemeManager().saveTheme(false)).not.toThrow();
+    });
+
+    it('applyThemePreference is a no-op when document is undefined', () => {
+      vi.stubGlobal('document', undefined);
+      expect(() => applyThemePreference(true)).not.toThrow();
+      expect(() => applyThemePreference(false)).not.toThrow();
+    });
+  });
 });
