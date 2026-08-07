@@ -2,6 +2,22 @@ import { describe, expect, it } from 'vitest';
 import { parseResumeDocument, resumeData } from '../src/resume';
 import validResumeData from '../src/resume.json';
 
+/** Deep-clone valid resume JSON and set a nested value by dotted/bracket path. */
+function withPath(path: string, value: unknown): unknown {
+  const root = structuredClone(validResumeData) as Record<string, unknown>;
+  const tokens = path
+    .replace(/\[(\d+)\]/g, '.$1')
+    .split('.')
+    .filter(Boolean);
+
+  let cursor: Record<string, unknown> = root;
+  for (let i = 0; i < tokens.length - 1; i += 1) {
+    cursor = cursor[tokens[i]] as Record<string, unknown>;
+  }
+  cursor[tokens[tokens.length - 1]] = value;
+  return root;
+}
+
 describe('parseResumeDocument', () => {
   it('parses valid resume data correctly', () => {
     const parsedData = parseResumeDocument(validResumeData);
@@ -168,5 +184,148 @@ describe('parseResumeDocument', () => {
     expect(() => parseResumeDocument(data)).toThrow(
       'resumeData.interests[0].url must be a string.',
     );
+  });
+
+  describe('exact error context paths', () => {
+    const notAnObject = 123;
+    const notAString = 123;
+    const notAnArray = 'not-an-array';
+
+    const objectPathCases: Array<{ path: string; message: string }> = [
+      { path: 'header', message: 'resumeData.header must be an object.' },
+      { path: 'hero', message: 'resumeData.hero must be an object.' },
+      { path: 'originStory', message: 'resumeData.originStory must be an object.' },
+      { path: 'footer', message: 'resumeData.footer must be an object.' },
+      { path: 'hero.primaryButton', message: 'resumeData.hero.primaryButton must be an object.' },
+      { path: 'hero.secondaryButton', message: 'resumeData.hero.secondaryButton must be an object.' },
+      { path: 'hero.ideSnippet', message: 'resumeData.hero.ideSnippet must be an object.' },
+      { path: 'hero.ideSnippet.code', message: 'resumeData.hero.ideSnippet.code must be an object.' },
+      {
+        path: 'header.socialLinks[0]',
+        message: 'resumeData.header.socialLinks[0] must be an object.',
+      },
+      {
+        path: 'sideProjects[0]',
+        message: 'resumeData.sideProjects[0] must be an object.',
+      },
+      {
+        path: 'sideProjects[0].metrics[0]',
+        message: 'resumeData.sideProjects[0].metrics[0] must be an object.',
+      },
+      {
+        path: 'experience[0]',
+        message: 'resumeData.experience[0] must be an object.',
+      },
+      {
+        path: 'education[0]',
+        message: 'resumeData.education[0] must be an object.',
+      },
+      {
+        path: 'certifications[0]',
+        message: 'resumeData.certifications[0] must be an object.',
+      },
+      {
+        path: 'interests[0]',
+        message: 'resumeData.interests[0] must be an object.',
+      },
+      {
+        path: 'interests[0].metrics[0]',
+        message: 'resumeData.interests[0].metrics[0] must be an object.',
+      },
+    ];
+
+    const arrayPathCases: Array<{ path: string; message: string }> = [
+      { path: 'header.socialLinks', message: 'resumeData.header.socialLinks must be an array.' },
+      { path: 'sideProjects', message: 'resumeData.sideProjects must be an array.' },
+      { path: 'experience', message: 'resumeData.experience must be an array.' },
+      { path: 'education', message: 'resumeData.education must be an array.' },
+      { path: 'certifications', message: 'resumeData.certifications must be an array.' },
+      { path: 'interests', message: 'resumeData.interests must be an array.' },
+      {
+        path: 'sideProjects[0].metrics',
+        message: 'resumeData.sideProjects[0].metrics must be an array.',
+      },
+      {
+        path: 'experience[0].technologies',
+        message: 'resumeData.experience[0].technologies must be an array.',
+      },
+      {
+        path: 'hero.ideSnippet.code.stack',
+        message: 'resumeData.hero.ideSnippet.code.stack must be an array.',
+      },
+      {
+        path: 'interests[0].metrics',
+        message: 'resumeData.interests[0].metrics must be an array.',
+      },
+    ];
+
+    const stringPathCases: string[] = [
+      'header.name',
+      'header.socialLinks[0].icon',
+      'header.socialLinks[0].url',
+      'hero.status',
+      'hero.headlinePrefix',
+      'hero.headlineHighlight',
+      'hero.description',
+      'hero.primaryButton.text',
+      'hero.primaryButton.url',
+      'hero.secondaryButton.text',
+      'hero.secondaryButton.url',
+      'hero.ideSnippet.filename',
+      'hero.ideSnippet.code.name',
+      'hero.ideSnippet.code.role',
+      'hero.ideSnippet.code.location',
+      'hero.ideSnippet.code.status',
+      'originStory.title',
+      'originStory.icon',
+      'originStory.content',
+      'sideProjects[0].title',
+      'sideProjects[0].icon',
+      'sideProjects[0].url',
+      'sideProjects[0].description',
+      'sideProjects[0].metrics[0].label',
+      'sideProjects[0].metrics[0].value',
+      'sideProjects[0].uptime',
+      'sideProjects[0].introUrl',
+      'experience[0].company',
+      'experience[0].role',
+      'experience[0].period',
+      'experience[0].description',
+      'education[0].institution',
+      'education[0].degree',
+      'education[0].graduationDate',
+      'education[0].icon',
+      'education[0].color',
+      'certifications[0].name',
+      'certifications[0].subtitle',
+      'certifications[0].validationId',
+      'certifications[0].icon',
+      'certifications[0].color',
+      'certifications[0].url',
+      'interests[0].title',
+      'interests[0].subtitle',
+      'interests[0].icon',
+      'interests[0].description',
+      'interests[0].status',
+      'interests[0].metrics[0].label',
+      'interests[0].metrics[0].value',
+      'footer.systemStatus',
+      'footer.region',
+      'footer.latency',
+    ];
+
+    it.each(objectPathCases)('reports exact object context for $path', ({ path, message }) => {
+      expect(() => parseResumeDocument(withPath(path, notAnObject))).toThrow(message);
+    });
+
+    it.each(arrayPathCases)('reports exact array context for $path', ({ path, message }) => {
+      expect(() => parseResumeDocument(withPath(path, notAnArray))).toThrow(message);
+    });
+
+    it.each(stringPathCases)('reports exact string context for resumeData.%s', (path) => {
+      expect(() => parseResumeDocument(withPath(path, notAString))).toThrow(
+        `resumeData.${path} must be a string.`,
+      );
+    });
   });
 });
